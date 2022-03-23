@@ -5,9 +5,12 @@ class HomePage extends StatelessWidget {
   final List<Item> items = [
     Item(name: 'Sugar', price: 5000),
     Item(name: 'Salt', price: 2000),
+    Item(name: 'Shampoo', price: 1000),
+    Item(name: 'Soap', price: 2000),
   ];
+  
 
-  // HomePage({ Key? key }) : super(key: key);
+  HomePage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +26,7 @@ class HomePage extends StatelessWidget {
           itemBuilder: (context,index) {
               final item =items[index];
               return InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/Item', arguments: item);
-                },
+                
                 
                 child: Card(
                   child :Container(
@@ -35,13 +36,22 @@ class HomePage extends StatelessWidget {
                       Expanded(
                         child: Text(
                           item.price.toString(),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          item.price.toString(),
                           textAlign: TextAlign.end,
                         ),
-                        )
+                      )
                     ],
                   ),
                 ),
                 ),
+                onTap: () {
+                 Navigator.pushNamed(context, '/Item', arguments: item);
+                },
               );
           },
           ),
